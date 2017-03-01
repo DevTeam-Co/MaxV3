@@ -1704,7 +1704,7 @@ local text = text:match('^setbotabout (.*)$')
 tdcli.changeAbout(text)
 tdcli.sendMessage(chat_id, msg_id, 1, '*Done*\n*Profile About Successful Changed..!*', 1, 'md')
 tdcli.sendMessage(chat_id, msg_id, 1,t,1,'md')
-elseif text:lower() == 'settings' and mod(data) then
+elseif text:lower() == 'options' and mod(data) then
 local link = db:get('links:Lock:'..chat_id)
 local fwd = db:get('fwd:Lock:'..chat_id)
 local reply = db:get('reply:'..chat_id)
