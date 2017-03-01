@@ -870,7 +870,7 @@ db:del('userid:'..msg.sender_user_id_)
 end
 if msg.content_.voice_ or msg.content_.audio_ or msg.content_.video_ or msg.content_.photo_ or msg.content_.animation_ or msg.content_.document_  or msg.content_.contact_ or msg.content_.sticker_ or msg.content_.text_ or msg.content_.location_ then
 if db:get('user_id:'..msg.sender_user_id_) then
-tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'File Caption => _['..msg.content_..caption..']_', 1,'md')
+tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'File Caption => _['..msg.content_.caption..']_', 1,'md')
 db:del('user_id:'..msg.sender_user_id_)
 end
 if not mod(data) then
