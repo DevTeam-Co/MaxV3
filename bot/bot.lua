@@ -812,7 +812,7 @@ if data.ID == 'UpdateMessageEdited' then
 if data.ID == 'UpdateMessageEdited' then
 if db:get('edit:Show:'..data.chat_id_) == 'Show' then
 text = db:hget('msgs:'..data.chat_id_,data.message_id_)
-tdcli.sendMessage(data.chat_id_,data.message_id_,0,'خخخ چرا ادیت کردی پیامتو��\nدیدم گفتی:\n'..text,1,'md')
+tdcli.sendMessage(data.chat_id_,data.message_id_,0,'_چرا ادیت میکنی؟ :|_\n\n_دیدم که گفتی:_\n*..text*,1,'md')
 db:hset('msgs:'..data.chat_id_,data.message_id_,data.new_content_.text_)
 --db:hdel('msgs:'..data.sender_user_id,data.message_id_) 
 end
@@ -870,7 +870,7 @@ db:del('userid:'..msg.sender_user_id_)
 end
 if msg.content_.voice_ or msg.content_.audio_ or msg.content_.video_ or msg.content_.photo_ or msg.content_.animation_ or msg.content_.document_  or msg.content_.contact_ or msg.content_.sticker_ or msg.content_.text_ or msg.content_.location_ then
 if db:get('user_id:'..msg.sender_user_id_) then
-tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'File Caption => _['..msg.content_.caption_..']_', 1,'md')
+tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'File Caption => _['..msg.content_caption..']_', 1,'md')
 db:del('user_id:'..msg.sender_user_id_)
 end
 if not mod(data) then
@@ -1076,7 +1076,7 @@ end
 end
 end
 if text:lower() == "ping" then
-tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'Ping...!', 1,'md')
+tdcli.sendMessage(msg.chat_id_, msg.id_, 1, '*Pong!*\n`I am Online!`', 1,'md')
 elseif text:match('setend (.*)') and sudo(data) then
 local endmsg = msg.content_.text_:match('setend (.*)')
 db:set('endmsg',endmsg)
@@ -1744,7 +1744,7 @@ local sec = db:get('security:'..chat_id)
 				else
 				exp_dat = math.floor(ex / 86400) + 1
 			    end
-local settings = '*Group Settings:*\n-----------------------\nLock Bots => _'..(bot or 'Unlock')..'_\nLock Emoji => _'..(emoji or 'Unlock')..'_\nLock Markdown => _'..(md or 'Unlock')..'_\nLock Tag => _'..(tag or 'Unlock')..'_\nLock Link => _'..(link or 'Unlock')..'_\nLock Username => _'..(user or 'Unlock')..'_\nLock Pin => _'..(pin or 'Unlock')..'_\nLock Forward => _'..(fwd or 'Unlock')..'_\nLock Reply => _'..(reply or 'Unlock')..'_\nLock Cmd => _'..(cmd or 'Unlock')..'_\nLock Flood => _'..(floods or 'Unlock')..'_\nLock Spam => _'..(spam or 'Unlock')..'_\nLock Arabic => _'..(arabic or 'Unlock')..'_\nLock English => _'..(english or 'Unlock')..'_\nLock Edit => _'..(edit or 'Unlock')..'_\nWelcome Status: _'..(wlc or 'Disable')..'_\nBye Status: _'..(bye or 'Disable')..'_\n-----------------------\n*Mute Settings:*\nMute All => _'..(mute or 'Unlock')..'_\nMute Photo => _'..(photo or 'Unlock')..'_\nMute Inline => _'..(inline or 'Unlock')..'_\nMute keyboard => _'..(keyboard or 'Unlock')..'_\nMute Audio => _'..(audio or 'Unlock')..'_\nMute Voice => _'..(voice or 'Unlock')..'_\nMute Location => _'..(location or 'Unlock')..'_\nMute Sticker => _'..(sticker or 'Unlock')..'_\nMute GIFs => _'..(gif or 'Unlock')..'_\nMute Document => _'..(dc or 'Unlock')..'_\nMute Video => _'..(video or 'Unlock')..'_\nMute Contact => _'..(contact or 'Unlock')..'_\n-----------------------\n*More Settings:*\nChar Sensitivity => _'..(chare or '0')..'_\nFlood Sensitivity => _'..(flood or '0')..'_\nFlood Time => _'..(time or '0')..'_\nSecurity Setting => _'..(sec or 'Kick')..'_\nExpire Time : => _'..exp_dat..'_'
+local settings = '*Group Options:*\n*____________________*\n`Lock Bots ~>` *'..(bot or 'Unlock')..'*\n`Lock Emoji ~>` *'..(emoji or 'Unlock')..'*\n`Lock Markdown ~>` *'..(md or 'Unlock')..'*\n`Lock Tag ~>` *'..(tag or 'Unlock')..'*\n`Lock Link ~>` *'..(link or 'Unlock')..'*\n`Lock Username ~>` *'..(user or 'Unlock')..'*\n`Lock Pin ~>` *'..(pin or 'Unlock')..'*\n`Lock Forward ~>` *'..(fwd or 'Unlock')..'*\n`Lock Reply ~>` *'..(reply or 'Unlock')..'*\n`Lock Cmd ~>` *'..(cmd or 'Unlock')..'*\n`Lock Flood ~>` *'..(floods or 'Unlock')..'*\n`Lock Spam ~>` *'..(spam or 'Unlock')..'*\n`Lock Arabic ~>` *'..(arabic or 'Unlock')..'*\n`Lock English ~>` *'..(english or 'Unlock')..'*\n`Lock Edit ~>` *'..(edit or 'Unlock')..'*\n`Welcome Status: ~>` *'..(wlc or 'Disable')..'*\n`Bye Status: ~>` *'..(bye or 'Disable')..'*\n*__________________*\n*Mute Options:*\n`Mute All ~>` *'..(mute or 'Unlock')..'*\n`Mute Photo ~>` *'..(photo or 'Unlock')..'*\n`Mute Inline ~>` *'..(inline or 'Unlock')..'*\n`Mute keyboard ~>` *'..(keyboard or 'Unlock')..'*\n`Mute Audio ~>` *'..(audio or 'Unlock')..'*\n`Mute Voice ~>` *'..(voice or 'Unlock')..'*\n`Mute Location ~>` *'..(location or 'Unlock')..'*\n`Mute Sticker ~>` *'..(sticker or 'Unlock')..'*\n`Mute GIFs ~>` *'..(gif or 'Unlock')..'*\n`Mute Document ~>` *'..(dc or 'Unlock')..'*\n`Mute Video ~>` *'..(video or 'Unlock')..'*\n`Mute Contact ~>` *'..(contact or 'Unlock')..'*\n*______________________*\n*More Options:*\n`Char Sensitivity ~>` *'..(chare or '0')..'*\n`Flood Sensitivity ~>` *'..(flood or '0')..'*\n`Flood Time ~>` *'..(time or '0')..'*\n`Security Setting ~>` *'..(sec or 'Kick')..'*\n`Expire Time ~>` *'..exp_dat..'*'
 tdcli.sendMessage(chat_id, msg_id, 1, settings, 1, 'md')
 elseif text:lower() == 'link' and mod(data) then
 if db:get('link:gp:'..msg.chat_id_) == nil then
