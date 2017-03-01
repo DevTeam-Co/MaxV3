@@ -812,7 +812,7 @@ if data.ID == 'UpdateMessageEdited' then
 if data.ID == 'UpdateMessageEdited' then
 if db:get('edit:Show:'..data.chat_id_) == 'Show' then
 text = db:hget('msgs:'..data.chat_id_,data.message_id_)
-tdcli.sendMessage(data.chat_id_,data.message_id_,0,'_چرا ادیت میکنی؟ :|_\n\n_دیدم که گفتی:_\n*..text*,1,'md')
+tdcli.sendMessage(data.chat_id_,data.message_id_,0,'_چرا ادیت میکنی؟ :|_\n\n_دیدم که گفتی:_\n*..text*,1,''md')
 db:hset('msgs:'..data.chat_id_,data.message_id_,data.new_content_.text_)
 --db:hdel('msgs:'..data.sender_user_id,data.message_id_) 
 end
