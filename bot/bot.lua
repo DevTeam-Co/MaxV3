@@ -868,7 +868,7 @@ if msg.forward_info_ and db:get('userid:'..msg.sender_user_id_) then
 tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'Post Views => `'..msg.views_..'`', 1, 'md')
 db:del('userid:'..msg.sender_user_id_)
 end
-if msg.content_.voice_ or msg.content_.audio_ or msg.content_.video_ or msg.content_.photo_ or msg.content_.animation_ or msg.content_.document_  or msg.content_.contact_ or msg.content_.sticker_ or msg.content_.text_ or msg.content_.location_ then
+if msg.content_.voice_ or msg.content_.audio_ or msg.content_.video_ or msg.content_.photo_ or msg.content_.animation_ or msg.content_.document_  or msg.content_.contact_ or msg.content_.sticker_ or msg.content_.text_ or msg.content_.location_ or msg.content_.caption_ then
 if db:get('user_id:'..msg.sender_user_id_) then
 tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'File Caption => _['..msg.content_.caption_..']_', 1,'md')
 db:del('user_id:'..msg.sender_user_id_)
