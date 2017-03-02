@@ -8,7 +8,7 @@ local _color = require 'term.colors'
 require('./bot/utlis')
 chats = {}
 day = 86400
-bot_id = 322190322 --- You Bot ID
+bot_id = 317956104 --- You Bot ID
 sudo_users = {274807882}--Your id
 function chat_leave(chat_id, user_id)
   changeChatMemberStatus(chat_id, user_id, "Left")
@@ -812,7 +812,7 @@ if data.ID == 'UpdateMessageEdited' then
 if data.ID == 'UpdateMessageEdited' then
 if db:get('edit:Show:'..data.chat_id_) == 'Show' then
 text = db:hget('msgs:'..data.chat_id_,data.message_id_)
-tdcli.sendMessage(data.chat_id_,data.message_id_,0,'*Dont Edit :|*\n`I saw You Said:`\n*..text*',1,'md')
+tdcli.sendMessage(data.chat_id_,data.message_id_,0,'خخخ چرا ادیت کردی پیامتو��\nدیدم گفتی:\n'..text,1,'md')
 db:hset('msgs:'..data.chat_id_,data.message_id_,data.new_content_.text_)
 --db:hdel('msgs:'..data.sender_user_id,data.message_id_) 
 end
@@ -841,8 +841,8 @@ local user_id = msg.sender_user_id_
       for k,v in pairs(sudo_users) do
         tdcli.sendMessage(v, 0, 1, "شارژ این گروه به اتمام رسید \nLink : "..(db:get("bot:group:link"..msg.chat_id_) or "تنظیم نشده").."\nID : "..msg.chat_id_..'\n\nدر صورتی که میخواهید ربات این گروه را ترک کند از دستور زیر استفاده کنید\n\n/leave'..msg.chat_id_..'\nبرای جوین دادن توی این گروه میتونی از دستور زیر استفاده کنی:\n/join'..msg.chat_id_..'\n_________________\nدر صورتی که میخواهید گروه رو دوباره شارژ کنید میتوانید از کد های زیر استفاده کنید...\n\n<code>برای شارژ 1 ماهه:</code>\n/plan1'..msg.chat_id_..'\n\n<code>برای شارژ 3 ماهه:</code>\n/plan2'..msg.chat_id_..'\n\n<code>برای شارژ نامحدود:</code>\n/plan3'..msg.chat_id_, 1, 'html')
       end
-        tdcli.sendMessage(msg.chat_id_, 0, 1, 'شارژ این گروه به اتمام رسید و ربات در گروه غیر فعال شد...\nبرای تمدید کردن ربات به @pedaret پیام دهید.\nدر صورت ریپورت بودن میتوانید با ربات زیر با ما در ارتباط باشید:\n @awmin_pvbot', 1, 'html')
-        tdcli.sendMessage(msg.chat_id_, 0, 1, 'ربات به دلایلی گروه را ترک میکند\nبرای اطلاعات بیشتر میتوانید با @pedaret در ارتباط باشید.\nدر صورت ریپورت بودن میتوانید با ربات زیر به ما پیام دهید\n@awmin_pvbot', 1, 'html')
+        tdcli.sendMessage(msg.chat_id_, 0, 1, 'شارژ این گروه به اتمام رسید و ربات در گروه غیر فعال شد...\nبرای تمدید کردن ربات به @pedaret پیام دهید.\nدر صورت ریپورت بودن میتوانید با ربات زیر با ما در ارتباط باشید:\n @awmin_pvbott', 1, 'html')
+        tdcli.sendMessage(msg.chat_id_, 0, 1, 'ربات به دلایلی گروه را ترک میکند\nبرای اطلاعات بیشتر میتوانید با @pedaret در ارتباط باشید.\nدر صورت ریپورت بودن میتوانید با ربات زیر به ما پیام دهید\n@awminpv_bot', 1, 'html')
 	   chat_leave(msg.chat_id_, bot_id)
       end
     end
@@ -868,7 +868,7 @@ if msg.forward_info_ and db:get('userid:'..msg.sender_user_id_) then
 tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'Post Views => `'..msg.views_..'`', 1, 'md')
 db:del('userid:'..msg.sender_user_id_)
 end
-if msg.content_.voice_ or msg.content_.audio_ or msg.content_.video_ or msg.content_.photo_ or msg.content_.animation_ or msg.content_.document_  or msg.content_.contact_ or msg.content_.sticker_ or msg.content_.text_ or msg.content_.location_ or msg.content_.caption_ then
+if msg.content_.voice_ or msg.content_.audio_ or msg.content_.video_ or msg.content_.photo_ or msg.content_.animation_ or msg.content_.document_  or msg.content_.contact_ or msg.content_.sticker_ or msg.content_.text_ or msg.content_.location_ then
 if db:get('user_id:'..msg.sender_user_id_) then
 tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'File Caption => _['..msg.content_.caption_..']_', 1,'md')
 db:del('user_id:'..msg.sender_user_id_)
@@ -1076,7 +1076,7 @@ end
 end
 end
 if text:lower() == "ping" then
-tdcli.sendMessage(msg.chat_id_, msg.id_, 1, '*Pong!*\n`I am Online!`', 1,'md')
+tdcli.sendMessage(msg.chat_id_, msg.id_, 1, 'Ping...!', 1,'md')
 elseif text:match('setend (.*)') and sudo(data) then
 local endmsg = msg.content_.text_:match('setend (.*)')
 db:set('endmsg',endmsg)
@@ -1704,7 +1704,7 @@ local text = text:match('^setbotabout (.*)$')
 tdcli.changeAbout(text)
 tdcli.sendMessage(chat_id, msg_id, 1, '*Done*\n*Profile About Successful Changed..!*', 1, 'md')
 tdcli.sendMessage(chat_id, msg_id, 1,t,1,'md')
-elseif text:lower() == 'options' and mod(data) then
+elseif text:lower() == 'settings' and mod(data) then
 local link = db:get('links:Lock:'..chat_id)
 local fwd = db:get('fwd:Lock:'..chat_id)
 local reply = db:get('reply:'..chat_id)
@@ -1744,7 +1744,7 @@ local sec = db:get('security:'..chat_id)
 				else
 				exp_dat = math.floor(ex / 86400) + 1
 			    end
-local settings = '*Group Options:*\n*____________________*\n`Lock Bots ~>` *'..(bot or 'Unlock')..'*\n`Lock Emoji ~>` *'..(emoji or 'Unlock')..'*\n`Lock Markdown ~>` *'..(md or 'Unlock')..'*\n`Lock Tag ~>` *'..(tag or 'Unlock')..'*\n`Lock Link ~>` *'..(link or 'Unlock')..'*\n`Lock Username ~>` *'..(user or 'Unlock')..'*\n`Lock Pin ~>` *'..(pin or 'Unlock')..'*\n`Lock Forward ~>` *'..(fwd or 'Unlock')..'*\n`Lock Reply ~>` *'..(reply or 'Unlock')..'*\n`Lock Cmd ~>` *'..(cmd or 'Unlock')..'*\n`Lock Flood ~>` *'..(floods or 'Unlock')..'*\n`Lock Spam ~>` *'..(spam or 'Unlock')..'*\n`Lock Arabic ~>` *'..(arabic or 'Unlock')..'*\n`Lock English ~>` *'..(english or 'Unlock')..'*\n`Lock Edit ~>` *'..(edit or 'Unlock')..'*\n`Welcome Status: ~>` *'..(wlc or 'Disable')..'*\n`Bye Status: ~>` *'..(bye or 'Disable')..'*\n*__________________*\n*Mute Options:*\n`Mute All ~>` *'..(mute or 'Unlock')..'*\n`Mute Photo ~>` *'..(photo or 'Unlock')..'*\n`Mute Inline ~>` *'..(inline or 'Unlock')..'*\n`Mute keyboard ~>` *'..(keyboard or 'Unlock')..'*\n`Mute Audio ~>` *'..(audio or 'Unlock')..'*\n`Mute Voice ~>` *'..(voice or 'Unlock')..'*\n`Mute Location ~>` *'..(location or 'Unlock')..'*\n`Mute Sticker ~>` *'..(sticker or 'Unlock')..'*\n`Mute GIFs ~>` *'..(gif or 'Unlock')..'*\n`Mute Document ~>` *'..(dc or 'Unlock')..'*\n`Mute Video ~>` *'..(video or 'Unlock')..'*\n`Mute Contact ~>` *'..(contact or 'Unlock')..'*\n*______________________*\n*More Options:*\n`Char Sensitivity ~>` *'..(chare or '0')..'*\n`Flood Sensitivity ~>` *'..(flood or '0')..'*\n`Flood Time ~>` *'..(time or '0')..'*\n`Security Setting ~>` *'..(sec or 'Kick')..'*\n`Expire Time ~>` *'..exp_dat..'*'
+local settings = '*Group Settings:*\n-----------------------\nLock Bots => _'..(bot or 'Unlock')..'_\nLock Emoji => _'..(emoji or 'Unlock')..'_\nLock Markdown => _'..(md or 'Unlock')..'_\nLock Tag => _'..(tag or 'Unlock')..'_\nLock Link => _'..(link or 'Unlock')..'_\nLock Username => _'..(user or 'Unlock')..'_\nLock Pin => _'..(pin or 'Unlock')..'_\nLock Forward => _'..(fwd or 'Unlock')..'_\nLock Reply => _'..(reply or 'Unlock')..'_\nLock Cmd => _'..(cmd or 'Unlock')..'_\nLock Flood => _'..(floods or 'Unlock')..'_\nLock Spam => _'..(spam or 'Unlock')..'_\nLock Arabic => _'..(arabic or 'Unlock')..'_\nLock English => _'..(english or 'Unlock')..'_\nLock Edit => _'..(edit or 'Unlock')..'_\nWelcome Status: _'..(wlc or 'Disable')..'_\nBye Status: _'..(bye or 'Diaable')..'_\n-----------------------\n*Mute Settings:*\nMute All => _'..(mute or 'Unlock')..'_\nMute Photo => _'..(photo or 'Unlock')..'_\nMute Inline => _'..(inline or 'Unlock')..'_\nMute keyboard => _'..(keyboard or 'Unlock')..'_\nMute Audio => _'..(audio or 'Unlock')..'_\nMute Voice => _'..(voice or 'Unlock')..'_\nMute Location => _'..(location or 'Unlock')..'_\nMute Sticker => _'..(sticker or 'Unlock')..'_\nMute GIFs => _'..(gif or 'Unlock')..'_\nMute Document => _'..(dc or 'Unlock')..'_\nMute Video => _'..(video or 'Unlock')..'_\nMute Contact => _'..(contact or 'Unlock')..'_\n-----------------------\n*More Settings:*\nChar Sensitivity => _'..(chare or '0')..'_\nFlood Sensitivity => _'..(flood or '0')..'_\nFlood Time => _'..(time or '0')..'_\nSecurity Setting => _'..(sec or 'Kick')..'_\nExpire Time : => _'..exp_dat..'_'
 tdcli.sendMessage(chat_id, msg_id, 1, settings, 1, 'md')
 elseif text:lower() == 'link' and mod(data) then
 if db:get('link:gp:'..msg.chat_id_) == nil then
