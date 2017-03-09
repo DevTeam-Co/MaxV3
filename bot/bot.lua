@@ -8,7 +8,7 @@ local _color = require 'term.colors'
 require('./bot/utlis')
 chats = {}
 day = 86400
-bot_id = 317956104 --- You Bot ID
+bot_id = 322190322 --- You Bot ID
 sudo_users = {274807882}--Your id
 function chat_leave(chat_id, user_id)
   changeChatMemberStatus(chat_id, user_id, "Left")
